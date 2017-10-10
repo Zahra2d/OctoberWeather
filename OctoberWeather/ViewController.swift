@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     let cellId = "cell"
@@ -17,10 +17,14 @@ class ViewController: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.dataSource = self
+        tableView.delegate = self
+        tableView.tableFooterView = UIView()
     
     }
     
-    // MARK: - UITableViewDataSourceemehhr
+    //MARK: - UITABLEVIEW
+    
+    // MARK: UITableViewDataSourceemehhr
     
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -32,6 +36,14 @@ class ViewController: UIViewController, UITableViewDataSource {
         cell?.textLabel?.text = names[indexPath.row]
         return cell!
     }
+    
+    
+    // MARK: UITableViewDelegate
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
 
 
 }
